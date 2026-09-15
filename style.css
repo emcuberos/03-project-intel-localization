@@ -15,12 +15,13 @@
 html { scroll-behavior: smooth; }
 body { margin: 0; color: var(--ink); background: var(--cream); font-family: 'Manrope', sans-serif; }
 .hero { min-height: 520px; padding: 54px 7vw 80px; background: var(--ink); color: var(--cream); position: relative; overflow: hidden; }
-.hero::after { content: ''; position: absolute; width: 44vw; height: 44vw; right: -14vw; bottom: -26vw; border: 1px solid rgba(0, 199, 253, .5); border-radius: 50%; box-shadow: 0 0 0 42px rgba(0, 199, 253, .06), 0 0 0 84px rgba(0, 199, 253, .04); }
+.hero::after { content: ''; position: absolute; width: 44vw; height: 44vw; inset-inline-end: -14vw; bottom: -26vw; border: 1px solid rgba(0, 199, 253, .5); border-radius: 50%; box-shadow: 0 0 0 42px rgba(0, 199, 253, .06), 0 0 0 84px rgba(0, 199, 253, .04); }
 .hero-content { max-width: 850px; position: relative; z-index: 1; }
 .intel-logo { width: 116px; filter: brightness(0) invert(1); margin-bottom: 78px; }
 .eyebrow, .year, footer { font: 500 12px 'DM Mono', monospace; letter-spacing: 0; text-transform: uppercase; }
 .eyebrow { color: var(--cyan); margin: 0 0 18px; }
 h1 { font-size: clamp(3.4rem, 8vw, 7rem); line-height: .9; letter-spacing: 0; margin: 0; font-weight: 800; }
+h2, h3 { font-weight: 700; }
 h1 em { color: var(--cyan); font-style: normal; }
 .hero-description { max-width: 490px; margin: 38px 0 0; color: #b9c7bd; line-height: 1.7; }
 .timeline-section { padding: 94px 7vw 16px; overflow-x: auto; overflow-y: visible; scroll-snap-type: x proximity; scroll-padding-inline: 7vw; }
@@ -28,28 +29,28 @@ h1 em { color: var(--cyan); font-style: normal; }
 .section-heading .eyebrow { color: var(--blue); }
 .section-heading h2 { font-size: clamp(2rem, 4vw, 4rem); line-height: 1; max-width: 620px; margin: 0; letter-spacing: 0; }
 .scroll-hint { color: var(--muted); margin: 24px 0 0; font-size: 16px; }
-.scroll-hint span { color: var(--blue); font-size: 24px; margin-left: 8px; }
-.timeline { display: flex; align-items: flex-start; gap: 22px; min-width: max-content; height: 470px; padding: 4px 7vw 0 0; position: relative; }
+.scroll-hint span { color: var(--blue); font-size: 24px; margin-inline-start: 8px; }
+.timeline { display: flex; align-items: flex-start; gap: 22px; min-width: max-content; height: 470px; padding-block-start: 4px; padding-inline-end: 7vw; position: relative; }
 .timeline-section::-webkit-scrollbar { height: 10px; }
 .timeline-section::-webkit-scrollbar-track { background: var(--line); }
 .timeline-section::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 5px; }
-.timeline::before { content: ''; position: absolute; top: 29px; left: 0; right: 7vw; height: 2px; background: var(--line); }
+.timeline::before { content: ''; position: absolute; top: 29px; inset-inline-start: 0; inset-inline-end: 7vw; height: 2px; background: var(--line); }
 .timeline-card { width: 270px; min-height: 210px; background: var(--card-blue); border: 1px solid var(--line); position: relative; overflow: visible; scroll-snap-align: start; transition: height .3s ease, transform .3s ease, box-shadow .3s ease, background .3s ease; }
-.timeline-card::before { content: ''; width: 12px; height: 12px; border: 3px solid var(--cream); background: var(--blue); border-radius: 50%; position: absolute; top: -38px; left: 7px; z-index: 2; pointer-events: none; transition: transform .3s ease, background .3s ease; }
+.timeline-card::before { content: ''; width: 16px; height: 16px; border: 3px solid var(--cream); background: var(--blue); border-radius: 50%; position: absolute; top: -40px; inset-inline-start: 7px; z-index: 2; pointer-events: none; transition: transform .3s ease, background .3s ease; }
 .timeline-card:hover { z-index: 3; height: 470px; transform: translateY(-12px); background: var(--blue); color: #fff; box-shadow: 9px 9px 0 var(--ink); }
 .timeline-card:hover::before { background: var(--cyan); transform: scale(1.25); }
 .timeline-card img { display: block; width: 100%; height: 210px; object-fit: cover; filter: saturate(.75); transition: filter .3s ease; }
 .timeline-card:hover img { filter: saturate(1.15); }
 .card-content { padding: 0 20px; }
-.year { color: var(--blue); position: absolute; top: -42px; left: 25px; font-size: 16px; margin: 0; pointer-events: none; }
-.timeline-card h3 { position: absolute; top: 190px; right: 16px; left: 16px; z-index: 1; color: #fff; font-size: 23px; line-height: 1.15; background: var(--ink); padding: 12px 14px; box-shadow: 5px 5px 0 var(--cyan); margin: 0; }
-.timeline-card p:last-child { color: #fff; font-size: 15px; line-height: 1.6; max-height: 0; margin: 0; opacity: 0; overflow: hidden; transform: translateY(12px); transition: max-height .35s ease, margin .35s ease, opacity .25s ease, transform .35s ease; }
+.year { color: var(--blue); position: absolute; top: -42px; inset-inline-start: 25px; font-size: 16px; margin: 0; pointer-events: none; }
+.timeline-card h3 { position: absolute; top: 190px; inset-inline: 16px; z-index: 1; color: #fff; font-size: 23px; line-height: 1.15; background: var(--ink); padding: 12px 14px; box-shadow: 5px 5px 0 var(--cyan); margin: 0; }
+.timeline-card p:last-child { position: absolute; top: 286px; inset-inline: 20px; color: #fff; font-size: 15px; line-height: 1.6; max-height: 160px; margin: 0; opacity: 0; visibility: hidden; overflow: hidden; pointer-events: none; transform: translateY(12px); transition: opacity .25s ease, transform .35s ease, visibility .35s ease; }
 .timeline-card:hover .card-content { padding-bottom: 22px; }
-.timeline-card:hover p:last-child { max-height: 160px; margin-top: 76px; opacity: 1; transform: translateY(0); color: #fff; }
+.timeline-card:hover p:last-child { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); color: #fff; }
 .timeline-card.long-copy p:last-child { font-size: 14.5px; line-height: 1.5; }
 .timeline-card.peak-ghg p:last-child { font-size: 13.5px; }
 footer { padding: 25px 7vw; border-top: 1px solid var(--line); color: var(--muted); }
-footer span { float: right; }
+footer span { float: inline-end; }
 @media (max-width: 700px) {
 	.hero { min-height: 610px; padding: 34px 8vw 70px; }
 	.intel-logo { margin-bottom: 90px; }
@@ -58,12 +59,13 @@ footer span { float: right; }
 	.timeline-section { padding: 70px 8vw; overflow: visible; scroll-snap-type: none; scroll-padding-inline: 0; }
 	.section-heading { display: block; margin-bottom: 45px; }
 	.scroll-hint { margin-top: 25px; }
-	.timeline { display: flex; flex-direction: column; gap: 110px; min-width: 0; height: auto; padding: 0 0 220px 27px; }
-	.timeline::before { top: 0; bottom: 0; left: 5px; right: auto; width: 2px; height: auto; }
+	.timeline { display: flex; flex-direction: column; gap: 110px; min-width: 0; height: auto; padding-block-end: 220px; padding-inline-start: 27px; }
+	.timeline::before { top: 0; bottom: 0; inset-inline-start: 5px; inset-inline-end: auto; width: 2px; height: auto; }
 	.timeline-card { width: 100%; min-height: 0; margin: 0; }
-	.timeline-card::before { top: -38px; left: 7px; }
-	.timeline-card .year { top: -34px; left: 25px; color: var(--blue); z-index: 3; }
+	.timeline-card::before { top: -40px; inset-inline-start: 7px; }
+	.timeline-card .year { top: -34px; inset-inline-start: 25px; color: var(--blue); z-index: 3; }
 	.timeline-card:hover { transform: translateX(7px); }
+	:dir(rtl) .timeline-card:hover { transform: translateX(-7px); }
 	.timeline-card:last-child { margin-top: 24px; }
 	.timeline-card.long-copy p:last-child { font-size: 14px; }
 	.timeline-card.peak-ghg p:last-child { font-size: 13px; }

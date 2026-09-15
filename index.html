@@ -1,9 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Intel: Sustainability Through the Ages</title>
+  <link id="bootstrap-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <script>
+    // Use RTL only for languages that are normally read from right to left.
+    const rtlLanguages = /^(ar|fa|he|ur|ps|sd|ku|dv|yi)(-|$)/i;
+    const bootstrapStylesheet = document.getElementById('bootstrap-css');
+
+    function updateDirection() {
+      const documentElement = document.documentElement;
+      const pageLanguage = documentElement.lang || navigator.language || '';
+      const isGoogleTranslateRtl = documentElement.classList.contains('translated-rtl');
+      const isGoogleTranslateLtr = documentElement.classList.contains('translated-ltr');
+      const isRtlLanguage = isGoogleTranslateRtl ||
+        (!isGoogleTranslateLtr && rtlLanguages.test(pageLanguage));
+      const direction = isRtlLanguage ? 'rtl' : 'ltr';
+      const stylesheet = isRtlLanguage
+        ? 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css'
+        : 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+
+      if (documentElement.dir !== direction) {
+        documentElement.dir = direction;
+      }
+      if (bootstrapStylesheet.href !== stylesheet) {
+        bootstrapStylesheet.href = stylesheet;
+      }
+    }
+
+    updateDirection();
+
+    // Google Translate can update the language or direction after the page loads.
+    const languageObserver = new MutationObserver(updateDirection);
+    languageObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['lang', 'class']
+    });
+  </script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -24,7 +59,7 @@
 
   <!-- Timeline Cards Section -->
   <main>
-    <section class="timeline-section" aria-labelledby="timeline-heading">
+    <section class="timeline-section" aria-labelledby="timeline-heading" translate="yes">
       <div class="section-heading">
         <div>
           <p class="eyebrow">Our progress</p>
@@ -41,7 +76,7 @@
       <p class="year">1968</p>
       <h3>Intel Founded</h3>
       <!-- Add image -->
-      <p>
+      <p translate="yes">
         Robert Noyce and Gordon Moore rename the newly formed company 
         NM Electronics to Intel Corporation, laying the foundation for 
         decades of technological innovation.
@@ -56,7 +91,7 @@
       <p class="year">1971</p>
       <h3>First Microprocessor</h3>
       <!-- Add image -->
-      <p>
+      <p translate="yes">
         Intel debuts the 4004, the world's first commercial microprocessor, 
         igniting the microprocessor revolution and propelling the future 
         of computing devices.
@@ -71,7 +106,7 @@
       <p class="year">1978</p>
       <h3>8086 Processor</h3>
       <!-- Add image -->
-      <p>
+      <p translate="yes">
         Launch of the 8086 processor, establishing the x86 architecture 
         that drives countless PCs and servers in the modern era.
       </p>
@@ -85,7 +120,7 @@
       <p class="year">1985</p>
       <h3>386 Processor</h3>
       <!-- Add image -->
-      <p>
+      <p translate="yes">
         Intel introduces the 386 processor with 32-bit architecture, 
         ushering in a new era of performance and multitasking for 
         personal computers.
@@ -100,7 +135,7 @@
       <p class="year">2006</p>
       <h3>Peak GHG Emissions</h3>
       <!-- Add image -->
-      <p>
+      <p translate="yes">
         This year marks Intel's highest annual greenhouse gas emissions 
         for operations. Over subsequent years, Intel invests heavily in 
         chemical abatement, renewable energy, and energy-efficient 
@@ -116,7 +151,7 @@
       <p class="year">2020</p>
       <h3>RISE Strategy</h3>
       <!-- Add image -->
-      <p>
+      <p translate="yes">
         Intel launches its RISE (Responsible, Inclusive, Sustainable, 
         Enabling) strategy and 2030 goals, aiming to drive industry-wide 
         progress on climate action, water stewardship, and waste reduction.
@@ -131,7 +166,7 @@
       <p class="year">2022</p>
       <h3>Net-Zero By 2040</h3>
       <!-- Add image -->
-      <p>
+      <p translate="yes">
         Intel announces its commitment to achieve net-zero greenhouse 
         gas emissions (Scope 1 and 2) across its global operations 
         by 2040, building on years of environmental initiatives.
@@ -146,7 +181,7 @@
       <p class="year">2023</p>
       <h3>Renewable Electricity</h3>
       <!-- Add image -->
-      <p>
+      <p translate="yes">
         The company achieves 99% renewable electricity usage worldwide, 
         helping to drastically lower carbon emissions and driving progress 
         toward Intel's long-term sustainability goals.
@@ -161,7 +196,7 @@
       <p class="year">2024</p>
       <h3>Sustainability Summit</h3>
       <!-- Add image -->
-      <p>
+      <p translate="yes">
         Intel hosts its first Sustainability Summit, uniting suppliers, 
         government officials, and industry leaders to collaborate on 
         next-generation sustainable semiconductor manufacturing.
@@ -171,6 +206,75 @@
       </div>
     </section>
   </main>
-  <footer>Intel sustainability timeline </footer>
+
+  <!-- 3-Column Content Section -->
+  <section class="container my-5" aria-labelledby="strategy-heading">
+    <div class="row g-4">
+
+      <!-- Column 1 -->
+      <div class="col-12 col-md-4">
+        <h2 id="strategy-heading">RISE Strategy</h2>
+        <p>
+          Under its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy,
+          Intel sets ambitious 2030 goals, including driving industry-wide
+          progress on climate action, water stewardship, and waste reduction.
+        </p>
+        <!-- Learn More Button -->
+        <a href="#">Learn More</a>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="col-12 col-md-4">
+        <h2>Commitment</h2>
+        <p>
+          In 2022, Intel pledged to achieve net-zero greenhouse gas emissions
+          (Scope 1 and 2) by 2040. This commitment builds on decades of
+          environmental initiatives and partnerships across the semiconductor
+          industry.
+        </p>
+        <!-- Learn More Button -->
+        <a href="#">Learn More</a>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="col-12 col-md-4">
+        <h2>Water &amp; Waste</h2>
+        <p>
+          Intel conserves billions of gallons of water annually and
+          collaborates with local communities to restore watersheds.
+          Intel also upcycles and recycles materials to reduce waste and
+          advance a circular economy.
+        </p>
+        <!-- Learn More Button -->
+        <a href="#">Learn More</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Subscription Form -->
+  <section class="container my-5" aria-labelledby="newsletter-heading">
+    <h2 id="newsletter-heading">Subscribe to our Newsletter</h2>
+    <form class="row g-3" action="#" method="post">
+      <div class="col-12 col-md-8">
+        <label class="form-label" for="email">Email address</label>
+        <input class="form-control" type="email" id="email" name="email" placeholder="name@example.com" required />
+      </div>
+      <div class="col-12 col-md-4 d-flex align-items-end">
+        <button class="btn btn-primary w-100" type="submit">Subscribe</button>
+      </div>
+    </form>
+  </section>
+
+  <footer class="container-fluid py-4 px-4 px-md-5">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+      <span>&copy; 2026 Intel Corporation</span>
+      <nav aria-label="Footer navigation">
+        <a class="me-3" href="#">Privacy Policy</a>
+        <a class="me-3" href="#">Terms of Use</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>
